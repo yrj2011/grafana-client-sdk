@@ -53,6 +53,8 @@ public class Dashboard {
   @JsonProperty("id")
   private Long id = null;
 
+  private String iteration;
+
   @JsonProperty("links")
   private List<String> links = null;
 
@@ -77,8 +79,8 @@ public class Dashboard {
   @JsonProperty("time")
   private Time time = null;
 
-  //@JsonProperty("timepicker")
-  //private TimePicker timepicker = null;
+  @JsonProperty("timepicker")
+  private TimePicker timepicker = null;
 
   @JsonProperty("timezone")
   private String timezone = null;

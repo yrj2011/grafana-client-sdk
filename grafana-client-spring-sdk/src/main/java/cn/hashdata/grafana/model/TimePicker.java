@@ -28,5 +28,7 @@ import java.util.Arrays;
 public class TimePicker implements Serializable {
 
     private List<String> refresh_intervals;
+
+    private List<String> time_options;
 }
 

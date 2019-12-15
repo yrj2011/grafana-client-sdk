@@ -13,6 +13,7 @@
 
 package cn.hashdata.grafana.model;
 
+import java.util.List;
 import java.util.Objects;
 import java.util.Arrays;
 import cn.hashdata.grafana.model.GridPos;
@@ -21,14 +22,21 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import lombok.Data;
 
 /**
  * Panel
  */
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-06-17T15:47:40.212Z")
+@Data
 public class Panel {
+
+  private String cacheTimeout;
+
   @JsonProperty("content")
   private String content = null;
+
+  private String datasource ;
 
   @JsonProperty("gridPos")
   private GridPos gridPos = null;
@@ -36,15 +44,51 @@ public class Panel {
   @JsonProperty("id")
   private Integer id = null;
 
+  private List<String> links;
+
   @JsonProperty("mode")
   private String mode = null;
 
-  @JsonProperty("title")
-  private String title = null;
+  private List<Target> targets;
 
-  @JsonProperty("type")
-  private String type = null;
+  private String timeFrom;
 
+  private String timeShift;
+
+  private String title;
+
+  private String type;
+
+  private String colorBackground;
+
+  private String colorValue;
+
+  private List<String> colors;
+
+  private String format;
+
+  private Gauge gauge;
+
+  private String interval;
+
+  private String mappingType;
+
+  private List<MappingType> mappingTypes;
+
+  private String maxDataPoints;
+  private String nullPointMode;
+  private String nullText;
+  private String postfix;
+  private String postfixFontSize;
+  private String prefix;
+  private String prefixFontSize;
+  private List<RangeMap> rangeMaps;
+  private Sparkline  sparkline;
+  private String tableColumn;
+  private String thresholds;
+  private String valueFontSize;
+  private List<ValueMap>  valueMaps;
+  private String valueName;
   public Panel content(String content) {
     this.content = content;
     return this;

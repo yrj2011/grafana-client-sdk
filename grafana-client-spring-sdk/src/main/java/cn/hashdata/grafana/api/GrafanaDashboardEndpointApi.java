@@ -40,7 +40,7 @@ public class GrafanaDashboardEndpointApi {
     @Autowired
     public GrafanaDashboardEndpointApi(ApiClient apiClient) {
         this.apiClient = apiClient;
-        apiClient.setAccessToken("eyJrIjoiR0NkRXEzZ3Exd3g5Q01aN1o0cUE0bnQwTG5OZXFYS3QiLCJuIjoidGVzdDEiLCJpZCI6MX0=");
+        apiClient.setAccessToken("eyJrIjoiWHZxbDhwaVpEVW1DMDUxbG9GS2lmQ05UcXFxbDBJUFUiLCJuIjoiY2hhbm5lbEtleSIsImlkIjoxfQ==");
     }
 
     public ApiClient getApiClient() {

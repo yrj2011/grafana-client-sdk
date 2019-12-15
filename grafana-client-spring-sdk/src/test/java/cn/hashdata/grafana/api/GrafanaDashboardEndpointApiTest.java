@@ -73,8 +73,10 @@ public class GrafanaDashboardEndpointApiTest {
      */
     @Test
     public void getDashboardByUIDUsingGETTest() {
+        //Key
+        //eyJrIjoiWHZxbDhwaVpEVW1DMDUxbG9GS2lmQ05UcXFxbDBJUFUiLCJuIjoiY2hhbm5lbEtleSIsImlkIjoxfQ==
         Gson gson = new Gson();
-        String uid = "kyJgQ4fZz";
+        String uid = "J0qBhIfZk";
         DashboardFullWithMeta response = api.getDashboardByUIDUsingGET(uid);
 
         System.out.println(gson.toJson(response));
@@ -89,18 +91,33 @@ public class GrafanaDashboardEndpointApiTest {
         request.setFolderId(response.getMeta().getFolderId());
 
         List<Panel> panels = dashboard.getPanels();
-        panels.forEach(panel -> {
+      /*  panels.forEach(panel -> {
             GridPos gridPos = panel.getGridPos();
             gridPos.setW(20);
             gridPos.setH(10);
-        });
-        System.out.println(gson.toJson(response));
-        /*CreateDashboardResponse response2 = api.createAndUpdateDashboardUsingPOST(request);
-        System.out.println(response2);*/
+        });*/
+        String updateJson = gson.toJson(request);
+
+        updateJson = updateJson.replace("\\u0026","&");
+        while(updateJson.contains("\\u003d")) {
+            updateJson = updateJson.replace("\\u003d", "=");
+        }
+
+        Type typeOfT = new TypeToken<SaveDashboardCommand>(){}.getType();
+
+        System.out.println(updateJson);
+        request = gson.fromJson(updateJson,  typeOfT);
+
+        System.out.println( gson.toJson(request));
+        CreateDashboardResponse response2 = api.createAndUpdateDashboardUsingPOST(request);
+        System.out.println(response2);
     }
 
     @Test
     public void testGson(){
+        String str = "aabb \\u0026 aa";
+        str = str.replaceAll("\\u0026","\\&");
+
         String value = "{\"meta\":{\"type\":\"db\",\"canSave\":true,\"canEdit\":true,\"canAdmin\":true,\"canStar\":true,\"slug\":\"123\",\"url\":\"/d/kyJgQ4fZz/123\",\"expires\":\"0001-01-01T00:00:00Z\",\"created\":\"2019-12-15T05:33:30Z\",\"updated\":\"2019-12-15T05:34:35Z\",\"updatedBy\":\"admin\",\"createdBy\":\"admin\",\"version\":3,\"hasAcl\":false,\"isFolder\":false,\"folderId\":0,\"folderTitle\":\"General\",\"folderUrl\":\"\",\"provisioned\":false,\"provisionedExternalId\":\"\"},\"dashboard\":{\"annotations\":{\"list\":[{\"builtIn\":1,\"datasource\":\"-- Grafana --\",\"enable\":true,\"hide\":true,\"iconColor\":\"rgba(0, 211, 255, 1)\",\"name\":\"Annotations \\u0026 Alerts\",\"type\":\"dashboard\"}]},\"editable\":true,\"gnetId\":null,\"graphTooltip\":0,\"id\":1,\"links\":[],\"panels\":[{\"aliasColors\":{},\"bars\":false,\"dashLength\":10,\"dashes\":false,\"description\":\"\",\"fill\":1,\"fillGradient\":0,\"gridPos\":{\"h\":9,\"w\":12,\"x\":0,\"y\":0},\"id\":2,\"legend\":{\"avg\":false,\"current\":false,\"max\":false,\"min\":false,\"show\":true,\"total\":false,\"values\":false},\"lines\":true,\"linewidth\":1,\"nullPointMode\":\"null\",\"options\":{\"dataLinks\":[]},\"percentage\":false,\"pointradius\":2,\"points\":false,\"renderer\":\"flot\",\"seriesOverrides\":[],\"spaceLength\":10,\"stack\":false,\"steppedLine\":false,\"targets\":[{\"expr\":\"event_bus_node_167_1\",\"legendFormat\":\"b\",\"refId\":\"A\"}],\"thresholds\":[],\"timeFrom\":null,\"timeRegions\":[],\"timeShift\":null,\"title\":\"a\",\"tooltip\":{\"shared\":true,\"sort\":0,\"value_type\":\"individual\"},\"type\":\"graph\",\"xaxis\":{\"buckets\":null,\"mode\":\"time\",\"name\":null,\"show\":true,\"values\":[]},\"yaxes\":[{\"format\":\"short\",\"label\":null,\"logBase\":1,\"max\":null,\"min\":null,\"show\":true},{\"format\":\"short\",\"label\":null,\"logBase\":1,\"max\":null,\"min\":null,\"show\":true}],\"yaxis\":{\"align\":false,\"alignLevel\":null}}],\"schemaVersion\":19,\"style\":\"dark\",\"tags\":[],\"templating\":{\"list\":[]},\"time\":{\"from\":\"now-6h\",\"to\":\"now\"},\"timepicker\":{},\"timezone\":\"\",\"title\":\"123\",\"uid\":\"kyJgQ4fZz\",\"version\":3}}";
 
         DashboardFullWithMeta meta = null;

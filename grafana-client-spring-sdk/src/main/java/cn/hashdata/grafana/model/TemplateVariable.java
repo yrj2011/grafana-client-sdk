@@ -22,6 +22,8 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import lombok.Data;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,9 +31,11 @@ import java.util.List;
  * TemplateVariable
  */
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-06-17T15:47:40.212Z")
+@Data
 public class TemplateVariable {
-  @JsonProperty("allFormat")
-  private String allFormat = null;
+  private String allValue = null;
+
+  private String allFormat;
 
   @JsonProperty("current")
   private CurrentSelectedVariable current = null;
@@ -65,6 +69,20 @@ public class TemplateVariable {
 
   @JsonProperty("type")
   private String type = null;
+
+  private String definition;
+
+  private String hide;
+
+  private String label;
+
+  private String skipUrlSync;
+
+  private String sort;
+  private String tagValuesQuery;
+  private List<String> tags;
+  private String tagsQuery;
+  private String useTags;
 
   public TemplateVariable allFormat(String allFormat) {
     this.allFormat = allFormat;
