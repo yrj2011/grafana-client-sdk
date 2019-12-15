@@ -40,13 +40,13 @@ public class DashboardMeta {
   private Boolean canStar = null;
 
   @JsonProperty("created")
-  private OffsetDateTime created = null;
+  private String created = null;
 
   @JsonProperty("createdBy")
   private String createdBy = null;
 
   @JsonProperty("expires")
-  private OffsetDateTime expires = null;
+  private String expires = null;
 
   @JsonProperty("folder")
   private Boolean folder = null;
@@ -82,7 +82,7 @@ public class DashboardMeta {
   private String type = null;
 
   @JsonProperty("updated")
-  private OffsetDateTime updated = null;
+  private String  updated = null;
 
   @JsonProperty("updatedBy")
   private String updatedBy = null;
@@ -165,7 +165,7 @@ public class DashboardMeta {
     this.canStar = canStar;
   }
 
-  public DashboardMeta created(OffsetDateTime created) {
+  public DashboardMeta created(String  created) {
     this.created = created;
     return this;
   }
@@ -175,11 +175,11 @@ public class DashboardMeta {
    * @return created
   **/
   @ApiModelProperty(value = "")
-  public OffsetDateTime getCreated() {
+  public String  getCreated() {
     return created;
   }
 
-  public void setCreated(OffsetDateTime created) {
+  public void setCreated(String  created) {
     this.created = created;
   }
 
@@ -201,7 +201,7 @@ public class DashboardMeta {
     this.createdBy = createdBy;
   }
 
-  public DashboardMeta expires(OffsetDateTime expires) {
+  public DashboardMeta expires(String  expires) {
     this.expires = expires;
     return this;
   }
@@ -211,11 +211,11 @@ public class DashboardMeta {
    * @return expires
   **/
   @ApiModelProperty(value = "")
-  public OffsetDateTime getExpires() {
+  public String  getExpires() {
     return expires;
   }
 
-  public void setExpires(OffsetDateTime expires) {
+  public void setExpires(String  expires) {
     this.expires = expires;
   }
 
@@ -417,7 +417,7 @@ public class DashboardMeta {
     this.type = type;
   }
 
-  public DashboardMeta updated(OffsetDateTime updated) {
+  public DashboardMeta updated(String  updated) {
     this.updated = updated;
     return this;
   }
@@ -427,11 +427,11 @@ public class DashboardMeta {
    * @return updated
   **/
   @ApiModelProperty(value = "")
-  public OffsetDateTime getUpdated() {
+  public String  getUpdated() {
     return updated;
   }
 
-  public void setUpdated(OffsetDateTime updated) {
+  public void setUpdated(String  updated) {
     this.updated = updated;
   }
 

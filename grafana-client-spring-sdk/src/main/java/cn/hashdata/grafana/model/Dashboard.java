@@ -25,6 +25,8 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import lombok.Data;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -32,12 +34,15 @@ import java.util.List;
  * Dashboard
  */
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-06-17T15:47:40.212Z")
+@Data
 public class Dashboard {
   @JsonProperty("annotations")
   private Annotations annotations = null;
 
   @JsonProperty("editable")
   private Boolean editable = null;
+
+  private String gnetId;
 
   @JsonProperty("graphTooltip")
   private Integer graphTooltip = null;
@@ -72,8 +77,8 @@ public class Dashboard {
   @JsonProperty("time")
   private Time time = null;
 
-  @JsonProperty("timepicker")
-  private TimePicker timepicker = null;
+  //@JsonProperty("timepicker")
+  //private TimePicker timepicker = null;
 
   @JsonProperty("timezone")
   private String timezone = null;
@@ -346,7 +351,7 @@ public class Dashboard {
   }
 
   public Dashboard timepicker(TimePicker timepicker) {
-    this.timepicker = timepicker;
+    //this.timepicker = timepicker;
     return this;
   }
 
@@ -354,13 +359,13 @@ public class Dashboard {
    * Get timepicker
    * @return timepicker
   **/
-  @ApiModelProperty(value = "")
+  /*@ApiModelProperty(value = "")
   public TimePicker getTimepicker() {
     return timepicker;
-  }
+  }*/
 
   public void setTimepicker(TimePicker timepicker) {
-    this.timepicker = timepicker;
+    //this.timepicker = timepicker;
   }
 
   public Dashboard timezone(String timezone) {
@@ -458,7 +463,7 @@ public class Dashboard {
         Objects.equals(this.tags, dashboard.tags) &&
         Objects.equals(this.templating, dashboard.templating) &&
         Objects.equals(this.time, dashboard.time) &&
-        Objects.equals(this.timepicker, dashboard.timepicker) &&
+        //Objects.equals(this.timepicker, dashboard.timepicker) &&
         Objects.equals(this.timezone, dashboard.timezone) &&
         Objects.equals(this.title, dashboard.title) &&
         Objects.equals(this.uid, dashboard.uid) &&
@@ -467,7 +472,7 @@ public class Dashboard {
 
   @Override
   public int hashCode() {
-    return Objects.hash(annotations, editable, graphTooltip, hideControls, id, links, panels, refresh, schemaVersion, style, tags, templating, time, timepicker, timezone, title, uid, version);
+    return Objects.hash(annotations, editable, graphTooltip, hideControls, id, links, panels, refresh, schemaVersion, style, tags, templating, time, timezone, title, uid, version);
   }
 
 
@@ -489,7 +494,7 @@ public class Dashboard {
     sb.append("    tags: ").append(toIndentedString(tags)).append("\n");
     sb.append("    templating: ").append(toIndentedString(templating)).append("\n");
     sb.append("    time: ").append(toIndentedString(time)).append("\n");
-    sb.append("    timepicker: ").append(toIndentedString(timepicker)).append("\n");
+    //sb.append("    timepicker: ").append(toIndentedString(timepicker)).append("\n");
     sb.append("    timezone: ").append(toIndentedString(timezone)).append("\n");
     sb.append("    title: ").append(toIndentedString(title)).append("\n");
     sb.append("    uid: ").append(toIndentedString(uid)).append("\n");

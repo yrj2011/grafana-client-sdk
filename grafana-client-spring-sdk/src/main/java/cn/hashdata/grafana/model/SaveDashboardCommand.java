@@ -37,13 +37,13 @@ public class SaveDashboardCommand {
   private Long folderId = null;
 
   @JsonProperty("message")
-  private String message = null;
+  private String message = "";
 
   @JsonProperty("overwrite")
-  private Boolean overwrite = null;
+  private Boolean overwrite = Boolean.FALSE;
 
   @JsonProperty("userId")
-  private Long userId = null;
+  private Long userId = 1L;
 
   public SaveDashboardCommand dashboard(Dashboard dashboard) {
     this.dashboard = dashboard;

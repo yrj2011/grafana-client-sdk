@@ -70,7 +70,7 @@ public class ApiClient {
     
     private HttpHeaders defaultHeaders = new HttpHeaders();
     
-    private String basePath = "https://localhost:3000";
+    private String basePath = "http://192.168.1.180:3000";
 
     private RestTemplate restTemplate;
 
@@ -517,6 +517,10 @@ public class ApiClient {
         addHeadersToRequest(defaultHeaders, requestBuilder);
         
         RequestEntity<Object> requestEntity = requestBuilder.body(selectBody(body, formParams, contentType));
+
+        ResponseEntity<String> responseEntity2 = restTemplate.exchange(requestEntity, String.class);
+
+        System.out.println(responseEntity2);
 
         ResponseEntity<T> responseEntity = restTemplate.exchange(requestEntity, returnType);
         

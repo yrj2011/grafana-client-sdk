@@ -36,9 +36,9 @@ public class GrafanaDataSourceEndpointApiTest {
     @Before
     public void setup() {
         ApiClient client = api.getApiClient();
-        client.setBasePath("http://localhost:3000");
+        client.setBasePath("http://192.168.1.180:3000");
         client.setUsername("admin");
-        client.setPassword("admin");
+        client.setPassword("401329");
     }
 
     private DataSource addDataSource() {

@@ -13,6 +13,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.google.gson.Gson;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.util.LinkedMultiValueMap;
@@ -39,6 +40,7 @@ public class GrafanaDashboardEndpointApi {
     @Autowired
     public GrafanaDashboardEndpointApi(ApiClient apiClient) {
         this.apiClient = apiClient;
+        apiClient.setAccessToken("eyJrIjoiR0NkRXEzZ3Exd3g5Q01aN1o0cUE0bnQwTG5OZXFYS3QiLCJuIjoidGVzdDEiLCJpZCI6MX0=");
     }
 
     public ApiClient getApiClient() {
@@ -61,9 +63,11 @@ public class GrafanaDashboardEndpointApi {
      * @return CreateDashboardResponse
      * @throws RestClientException if an error occurs while attempting to invoke the API
      */
+    static Gson gson = new Gson();
     public CreateDashboardResponse createAndUpdateDashboardUsingPOST(SaveDashboardCommand request) throws RestClientException {
         Object postBody = request;
-        
+
+        System.out.println(gson.toJson(postBody));
         // verify the required parameter 'request' is set
         if (request == null) {
             throw new HttpClientErrorException(HttpStatus.BAD_REQUEST, "Missing the required parameter 'request' when calling createAndUpdateDashboardUsingPOST");
@@ -81,6 +85,35 @@ public class GrafanaDashboardEndpointApi {
         final List<MediaType> accept = apiClient.selectHeaderAccept(accepts);
         final String[] contentTypes = { 
             "application/json"
+        };
+        final MediaType contentType = apiClient.selectHeaderContentType(contentTypes);
+
+        String[] authNames = new String[] { "basic", "oauth2" };
+
+        ParameterizedTypeReference<CreateDashboardResponse> returnType = new ParameterizedTypeReference<CreateDashboardResponse>() {};
+        return apiClient.invokeAPI(path, HttpMethod.POST, queryParams, postBody, headerParams, formParams, accept, contentType, authNames, returnType);
+    }
+
+    public CreateDashboardResponse updateDashboard(SaveDashboardCommand request) throws RestClientException {
+        Object postBody = request;
+
+        // verify the required parameter 'request' is set
+        if (request == null) {
+            throw new HttpClientErrorException(HttpStatus.BAD_REQUEST, "Missing the required parameter 'request' when calling createAndUpdateDashboardUsingPOST");
+        }
+
+        String path = UriComponentsBuilder.fromPath("/api/dashboards/db").build().toUriString();
+
+        final MultiValueMap<String, String> queryParams = new LinkedMultiValueMap<String, String>();
+        final HttpHeaders headerParams = new HttpHeaders();
+        final MultiValueMap<String, Object> formParams = new LinkedMultiValueMap<String, Object>();
+
+        final String[] accepts = {
+                "*/*"
+        };
+        final List<MediaType> accept = apiClient.selectHeaderAccept(accepts);
+        final String[] contentTypes = {
+                "application/json"
         };
         final MediaType contentType = apiClient.selectHeaderContentType(contentTypes);
 

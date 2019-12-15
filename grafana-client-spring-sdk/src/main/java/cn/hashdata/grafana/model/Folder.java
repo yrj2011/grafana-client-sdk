@@ -37,7 +37,7 @@ public class Folder {
   private Boolean canSave = null;
 
   @JsonProperty("created")
-  private OffsetDateTime created = null;
+  private String  created = null;
 
   @JsonProperty("createdBy")
   private String createdBy = null;
@@ -55,7 +55,7 @@ public class Folder {
   private String uid = null;
 
   @JsonProperty("updated")
-  private OffsetDateTime updated = null;
+  private String  updated = null;
 
   @JsonProperty("updatedBy")
   private String updatedBy = null;
@@ -120,7 +120,7 @@ public class Folder {
     this.canSave = canSave;
   }
 
-  public Folder created(OffsetDateTime created) {
+  public Folder created(String  created) {
     this.created = created;
     return this;
   }
@@ -130,11 +130,11 @@ public class Folder {
    * @return created
   **/
   @ApiModelProperty(value = "")
-  public OffsetDateTime getCreated() {
+  public String  getCreated() {
     return created;
   }
 
-  public void setCreated(OffsetDateTime created) {
+  public void setCreated(String  created) {
     this.created = created;
   }
 
@@ -228,7 +228,7 @@ public class Folder {
     this.uid = uid;
   }
 
-  public Folder updated(OffsetDateTime updated) {
+  public Folder updated(String  updated) {
     this.updated = updated;
     return this;
   }
@@ -238,11 +238,11 @@ public class Folder {
    * @return updated
   **/
   @ApiModelProperty(value = "")
-  public OffsetDateTime getUpdated() {
+  public String  getUpdated() {
     return updated;
   }
 
-  public void setUpdated(OffsetDateTime updated) {
+  public void setUpdated(String  updated) {
     this.updated = updated;
   }
 

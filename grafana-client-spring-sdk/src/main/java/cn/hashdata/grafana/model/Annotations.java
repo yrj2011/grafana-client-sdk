@@ -29,14 +29,14 @@ import java.util.List;
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-06-17T15:47:40.212Z")
 public class Annotations {
   @JsonProperty("list")
-  private List<String> list = null;
+  private List<Annotaion> list = null;
 
-  public Annotations list(List<String> list) {
+  public Annotations list(List<Annotaion> list) {
     this.list = list;
     return this;
   }
 
-  public Annotations addListItem(String listItem) {
+  public Annotations addListItem(Annotaion listItem) {
     if (this.list == null) {
       this.list = new ArrayList<>();
     }
@@ -49,11 +49,11 @@ public class Annotations {
    * @return list
   **/
   @ApiModelProperty(value = "")
-  public List<String> getList() {
+  public List<Annotaion> getList() {
     return list;
   }
 
-  public void setList(List<String> list) {
+  public void setList(List<Annotaion> list) {
     this.list = list;
   }
 
