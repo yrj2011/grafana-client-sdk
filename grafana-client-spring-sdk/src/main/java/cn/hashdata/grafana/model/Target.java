@@ -14,6 +14,6 @@ import lombok.Data;
 public class Target {
    private String expr;
    private String format;
-   private String intervalFactor;
+   private Long intervalFactor;
    private String refId;
 }

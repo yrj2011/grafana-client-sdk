@@ -14,5 +14,5 @@ import lombok.Data;
 public class MappingType {
 
    private String name;
-   private String value;
+   private Long value;
 }

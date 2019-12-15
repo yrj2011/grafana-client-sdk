@@ -12,7 +12,7 @@ import lombok.Data;
 @Data
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class Annotaion {
-    private String builtIn;
+    private Long builtIn;
     private String datasource;
     private String enable;
     private String hide;

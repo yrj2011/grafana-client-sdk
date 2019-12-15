@@ -61,9 +61,9 @@ public class Panel {
 
   private String type;
 
-  private String colorBackground;
+  private Boolean colorBackground;
 
-  private String colorValue;
+  private Boolean colorValue;
 
   private List<String> colors;
 
@@ -73,11 +73,11 @@ public class Panel {
 
   private String interval;
 
-  private String mappingType;
+  private Long mappingType;
 
   private List<MappingType> mappingTypes;
 
-  private String maxDataPoints;
+  private Long maxDataPoints;
   private String nullPointMode;
   private String nullText;
   private String postfix;

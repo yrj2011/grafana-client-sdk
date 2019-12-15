@@ -13,8 +13,8 @@ import lombok.Data;
 @Data
 public class Sparkline {
     private String fillColor;
-    private String full;
+    private Boolean full;
     private String lineColor;
-    private String show;
+    private Boolean show;
 
 }

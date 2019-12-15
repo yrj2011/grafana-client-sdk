@@ -13,9 +13,9 @@ import lombok.Data;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class Gauge {
 
-    private String maxValue;
-    private String minValue;
-    private String show;
-    private String thresholdLabels;
-    private String thresholdMarkers;
+    private Long maxValue;
+    private Long minValue;
+    private Boolean show;
+    private Boolean thresholdLabels;
+    private Boolean thresholdMarkers;
 }

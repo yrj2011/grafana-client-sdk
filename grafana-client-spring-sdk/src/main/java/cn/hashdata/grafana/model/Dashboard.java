@@ -55,7 +55,7 @@ public class Dashboard {
   @JsonProperty("id")
   private Long id = null;
 
-  private String iteration;
+  private Long iteration;
 
   @JsonProperty("links")
   private List<String> links = null;
