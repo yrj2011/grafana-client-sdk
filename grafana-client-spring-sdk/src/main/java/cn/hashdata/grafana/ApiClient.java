@@ -515,7 +515,12 @@ public class ApiClient {
         if (queryParams != null) {
             builder.queryParams(queryParams);
         }
-        
+
+        MediaType type = MediaType.parseMediaType("application/json; charset=UTF-8");
+//  请勿轻易改变此提交方式，大部分的情况下，提交方式都是表单提交
+        headerParams.setContentType(type);
+        headerParams.add("Accept", MediaType.APPLICATION_JSON.toString());
+
         final BodyBuilder requestBuilder = RequestEntity.method(method, builder.build().toUri());
         if(accept != null) {
             requestBuilder.accept(accept.toArray(new MediaType[accept.size()]));
