@@ -1,5 +1,6 @@
 package cn.hashdata.grafana.model;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Data;
 
 /**
@@ -9,6 +10,7 @@ import lombok.Data;
  * @since jdk1.8 
  */
 @Data
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class Annotaion {
     private String builtIn;
     private String datasource;

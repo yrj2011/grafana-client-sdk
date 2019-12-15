@@ -117,6 +117,7 @@ public class ApiClient {
         for (HttpMessageConverter<?> httpMessageConverter : list) {
             if(httpMessageConverter instanceof StringHttpMessageConverter) {
                 ((StringHttpMessageConverter) httpMessageConverter).setDefaultCharset(Charset.forName("UTF-8"));
+
                 break;
             }
         }

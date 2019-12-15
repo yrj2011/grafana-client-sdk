@@ -16,6 +16,7 @@ package cn.hashdata.grafana.model;
 import java.util.Objects;
 import java.util.Arrays;
 import cn.hashdata.grafana.model.Dashboard;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
@@ -25,6 +26,7 @@ import io.swagger.annotations.ApiModelProperty;
 /**
  * SaveDashboardCommand
  */
+@JsonInclude(JsonInclude.Include.NON_NULL)
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-06-17T15:47:40.212Z")
 public class SaveDashboardCommand {
   @JsonProperty("dashboard")

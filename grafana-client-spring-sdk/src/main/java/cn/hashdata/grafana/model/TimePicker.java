@@ -13,6 +13,7 @@
 
 package cn.hashdata.grafana.model;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Data;
 
 import java.io.Serializable;
@@ -23,6 +24,7 @@ import java.util.Arrays;
 /**
  * TimePicker
  */
+@JsonInclude(JsonInclude.Include.NON_NULL)
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-06-17T15:47:40.212Z")
 @Data
 public class TimePicker implements Serializable {

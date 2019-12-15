@@ -20,6 +20,7 @@ import cn.hashdata.grafana.model.Panel;
 import cn.hashdata.grafana.model.Templating;
 import cn.hashdata.grafana.model.Time;
 import cn.hashdata.grafana.model.TimePicker;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
@@ -35,6 +36,7 @@ import java.util.List;
  */
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-06-17T15:47:40.212Z")
 @Data
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class Dashboard {
   @JsonProperty("annotations")
   private Annotations annotations = null;

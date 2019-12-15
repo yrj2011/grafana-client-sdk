@@ -76,7 +76,7 @@ public class GrafanaDashboardEndpointApiTest {
         //Key
         //eyJrIjoiWHZxbDhwaVpEVW1DMDUxbG9GS2lmQ05UcXFxbDBJUFUiLCJuIjoiY2hhbm5lbEtleSIsImlkIjoxfQ==
         Gson gson = new Gson();
-        String uid = "J0qBhIfZk";
+        String uid = "GDsHxIfWk";
         DashboardFullWithMeta response = api.getDashboardByUIDUsingGET(uid);
 
         System.out.println(gson.toJson(response));
