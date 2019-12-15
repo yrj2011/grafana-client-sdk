@@ -76,7 +76,7 @@ public class GrafanaDashboardEndpointApiTest {
         //Key
         //eyJrIjoiWHZxbDhwaVpEVW1DMDUxbG9GS2lmQ05UcXFxbDBJUFUiLCJuIjoiY2hhbm5lbEtleSIsImlkIjoxfQ==
         Gson gson = new Gson();
-        String uid = "GDsHxIfWk";
+        String uid = "FdUS8SfWz";
         DashboardFullWithMeta response = api.getDashboardByUIDUsingGET(uid);
 
         System.out.println(gson.toJson(response));
@@ -91,11 +91,36 @@ public class GrafanaDashboardEndpointApiTest {
         request.setFolderId(response.getMeta().getFolderId());
 
         List<Panel> panels = dashboard.getPanels();
-      /*  panels.forEach(panel -> {
-            GridPos gridPos = panel.getGridPos();
+
+        List<Panel> newPanels = new ArrayList<>();
+
+        Type panelTypeOfT = new TypeToken<Panel>(){}.getType();
+
+       panels.forEach(panel -> {
+          /* if("text".equals(panel.getType())){
+               panel.setContent(panel.getContent().replace("_1_2_2",""));
+           }
+
+           if("singlestat".equals(panel.getType())){
+
+               Panel newPanel = gson.fromJson(gson.toJson(panel),panelTypeOfT);
+               newPanel.setId(null);
+               newPanel.getGridPos().setY(newPanel.getGridPos().getY()+30);
+               newPanels.add(newPanel);
+           }*/
+
+           Panel newPanel = gson.fromJson(gson.toJson(panel),panelTypeOfT);
+           newPanel.setId(panel.getId()+1);
+           newPanel.getGridPos().setX(newPanel.getGridPos().getX()+10);
+           newPanel.setTitle("2");
+           newPanels.add(newPanel);
+            /*GridPos gridPos = panel.getGridPos();
             gridPos.setW(20);
-            gridPos.setH(10);
-        });*/
+            gridPos.setH(10);*/
+        });
+
+        panels.addAll(newPanels);
+
         String updateJson = gson.toJson(request);
 
         updateJson = updateJson.replace("\\u0026","&");

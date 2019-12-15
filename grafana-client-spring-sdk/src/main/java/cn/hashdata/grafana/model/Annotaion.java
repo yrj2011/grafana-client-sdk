@@ -14,8 +14,8 @@ import lombok.Data;
 public class Annotaion {
     private Long builtIn;
     private String datasource;
-    private String enable;
-    private String hide;
+    private Boolean enable;
+    private Boolean hide;
     private String iconColor;
     private String name;
     private String type;

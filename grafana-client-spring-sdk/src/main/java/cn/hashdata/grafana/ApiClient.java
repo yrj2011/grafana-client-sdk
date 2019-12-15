@@ -1,5 +1,7 @@
 package cn.hashdata.grafana;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.databind.PropertyNamingStrategy;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,8 +19,19 @@ import org.springframework.http.client.BufferingClientHttpRequestFactory;
 import org.springframework.http.client.ClientHttpRequestExecution;
 import org.springframework.http.client.ClientHttpRequestInterceptor;
 import org.springframework.http.client.ClientHttpResponse;
+import org.springframework.http.converter.ByteArrayHttpMessageConverter;
 import org.springframework.http.converter.HttpMessageConverter;
+import org.springframework.http.converter.ResourceHttpMessageConverter;
 import org.springframework.http.converter.StringHttpMessageConverter;
+import org.springframework.http.converter.feed.AtomFeedHttpMessageConverter;
+import org.springframework.http.converter.feed.RssChannelHttpMessageConverter;
+import org.springframework.http.converter.json.GsonHttpMessageConverter;
+import org.springframework.http.converter.json.Jackson2ObjectMapperBuilder;
+import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
+import org.springframework.http.converter.support.AllEncompassingFormHttpMessageConverter;
+import org.springframework.http.converter.xml.Jaxb2RootElementHttpMessageConverter;
+import org.springframework.http.converter.xml.MappingJackson2XmlHttpMessageConverter;
+import org.springframework.http.converter.xml.SourceHttpMessageConverter;
 import org.springframework.stereotype.Component;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
@@ -52,6 +65,8 @@ import cn.hashdata.grafana.auth.Authentication;
 import cn.hashdata.grafana.auth.HttpBasicAuth;
 import cn.hashdata.grafana.auth.ApiKeyAuth;
 import cn.hashdata.grafana.auth.OAuth;
+
+import javax.xml.transform.Source;
 
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-06-17T15:47:40.212Z")
 @Component("cn.hashdata.grafana.ApiClient")
@@ -113,8 +128,21 @@ public class ApiClient {
         // Prevent the authentications from being modified.
         authentications = Collections.unmodifiableMap(authentications);
 
-        List<HttpMessageConverter<?>> list = restTemplate.getMessageConverters();
-        for (HttpMessageConverter<?> httpMessageConverter : list) {
+        List<HttpMessageConverter<?>> messageConverters = restTemplate.getMessageConverters();
+        messageConverters.clear();
+        messageConverters.add(new ByteArrayHttpMessageConverter());
+        messageConverters.add(new StringHttpMessageConverter());
+        messageConverters.add(new ResourceHttpMessageConverter());
+        messageConverters.add(new SourceHttpMessageConverter<Source>());
+        messageConverters.add(new AllEncompassingFormHttpMessageConverter());
+
+
+        messageConverters.add(
+        new MappingJackson2HttpMessageConverter(new Jackson2ObjectMapperBuilder().serializationInclusion(JsonInclude.Include.NON_NULL)
+                .build()));
+
+
+        for (HttpMessageConverter<?> httpMessageConverter : messageConverters) {
             if(httpMessageConverter instanceof StringHttpMessageConverter) {
                 ((StringHttpMessageConverter) httpMessageConverter).setDefaultCharset(Charset.forName("UTF-8"));
 
